@@ -2,9 +2,6 @@ FROM alpine:3.9
 
 MAINTAINER Pavel Ivanov
 
-ARG VERSION
-ENV AWS_CLI_VERSION=$VERSION
-
 RUN apk --update --no-cache add \
     python2 \
     py-pip \
@@ -14,4 +11,6 @@ RUN apk --update --no-cache add \
     && pip install --no-cache-dir awscli \
     && apk del py-pip \
     && rm -rf /var/cache/apk/* /root/.cache/pip/*
+
+ENTRYPOINT ['sh']
 
